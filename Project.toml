@@ -1,9 +1,16 @@
 name = "GraphMovesAnimations"
 uuid = "ff93e226-e211-4562-beac-64ec6c9f6e1d"
 authors = ["Chun-Tso Tsai <adfeel220@gmail.com> and contributors"]
-version = "1.0.0-DEV"
+version = "0.1.0"
+
+[deps]
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 
 [compat]
+Graphs = "1.9"
 julia = "1"
 
 [extras]
