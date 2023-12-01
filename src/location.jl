@@ -5,9 +5,9 @@ source(loc::GraphLocation)::Int = loc[1]
 target(loc::GraphLocation)::Int = loc[2]
 progress(loc::GraphLocation)::Float64 = loc[3]
 
-is_valid(loc::GraphLocation)::Bool = !(source(loc) <= 0 || target(loc) <= 0 || progress(loc) < 0.0 || progress(loc) > 1.0)
+is_valid(loc::GraphLocation)::Bool =
+    !(source(loc) <= 0 || target(loc) <= 0 || progress(loc) < 0.0 || progress(loc) > 1.0)
 is_vertex(loc::GraphLocation)::Bool = source(loc) == target(loc)
-
 
 function graphloc_to_phyloc(graph_loc::GraphLocation, layout::Vector{Point2{Float64}})
     if !is_valid(graph_loc)
