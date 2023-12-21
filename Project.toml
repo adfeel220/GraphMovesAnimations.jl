@@ -1,7 +1,7 @@
 name = "GraphMovesAnimations"
 uuid = "ff93e226-e211-4562-beac-64ec6c9f6e1d"
 authors = ["Chun-Tso Tsai <adfeel220@gmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
@@ -12,11 +12,11 @@ JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 [compat]
 Graphs = "1.9"
 julia = "1"
-GLMakie = "0.8"
-GraphMakie = "0.5"
+GLMakie = "^0"
+GraphMakie = "^0"
 JLD2 = "0.4"
-Aqua = "0.8"
-JET = "0.8"
+Aqua = "^0"
+JET = "^0"
 JuliaFormatter = "1"
 Test = "1"
 

@@ -133,10 +133,16 @@ end
 
 # a function: given a time `t`, return the position of agent (with respect to vertices)
 # return a tuple (from, to, status)
-function agent_location(path::AgentPath, t::Float64)::GraphLocation
+function agent_location(
+    path::AgentPath, t::Float64; stay_after_arrival::Bool=false
+)::GraphLocation
     after_events = [(event_id, tm) for (event_id, tm) in enumerate(path.time) if tm > t]
     if length(after_events) == 0
-        return last(path.location), last(path.location), 1.0
+        if stay_after_arrival
+            return last(path.location), last(path.location), 1.0
+        else
+            return -1, -1, 0.0
+        end
     elseif length(after_events) == length(path)
         return -1, -1, 0.0
     end

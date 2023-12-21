@@ -2,7 +2,7 @@
 function plot_interactive(
     result::MapfResult,
     layout::Vector{Point2{Float64}}=Spring()(result.network);
-    fontsize::Int=30,
+    fontsize::Int=24,
     deltatime::Float64=0.01,
     kwargs...,
 )
@@ -15,7 +15,7 @@ function plot_interactive(
         fig[2, 1],
         (label="Time", range=min_time:deltatime:max_time, startvalue=min_time),
         (label="Size", range=2:1:50, startvalue=12),
-        (label="Edge Curve", range=0.0:0.01:1.0, startvalue=0.02),
+        (label="Edge Curve", range=0.0:0.01:0.5, startvalue=0.02),
     )
 
     # Control time
@@ -63,7 +63,7 @@ end
 function plot_interactive(
     filename::String;
     vertex_binding::Bool=false,
-    fontsize::Int=30,
+    fontsize::Int=24,
     deltatime::Float64=0.01,
     kwargs...,
 )
@@ -71,13 +71,18 @@ function plot_interactive(
     @assert haskey(data, "network") "A MAPF result file must have key \"network\""
     @assert haskey(data, "vertices_result") "A MAPF result file must have key \"vertices_result\""
     @assert haskey(data, "edges_result") "A MAPF result file must have key \"edges_result\""
+    stay_after_arrival = get(data, "stay_after_arrival", false)
 
     network = data["network"]
     vertices_result = data["vertices_result"]
     edges_result = data["edges_result"]
 
     mapf_result = MapfResult(
-        network, vertices_result, edges_result; vertex_binding=vertex_binding
+        network,
+        vertices_result,
+        edges_result;
+        vertex_binding=vertex_binding,
+        stay_after_arrival=stay_after_arrival,
     )
 
     if haskey(data, "layout")
